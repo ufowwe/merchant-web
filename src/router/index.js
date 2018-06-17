@@ -1,15 +1,29 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
-  ]
+const router = new Router({
+    mode: 'history',
+    routes: [{
+        path: '/',
+        redirect: '/home',
+        component: resolve => require(['@/views/home/home.vue'], resolve),
+        children: [{
+            path: '/home',
+            component: resolve => require(['@/views/home/login.vue'], resolve),
+        }, {
+            path: '/register',
+            component: resolve => require(['@/views/home/register.vue'], resolve),
+        }]
+    }, {
+        path: '/admin',
+        component: resolve => require(['@/views/admin/index.vue'], resolve),
+        children: [{
+            path: '/admin',
+            component: resolve => require(['@/views/admin/main.vue'], resolve)
+        }]
+    }]
 })
+
+export default router;
