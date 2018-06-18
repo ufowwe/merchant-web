@@ -22,6 +22,12 @@ const router = new Router({
         children: [{
             path: '/admin',
             component: resolve => require(['@/views/admin/main.vue'], resolve)
+        }, {
+            path: '/webadd',
+            component: resolve => require(['@/views/web/webadd.vue'], resolve)
+        }, {
+            path: '/websea',
+            component: resolve => require(['@/views/web/websea.vue'], resolve)
         }]
     }]
 })

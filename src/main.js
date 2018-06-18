@@ -23,6 +23,8 @@ Vue.use(iView);
 //引入bootstrap
 import 'static/bootstrap/css/bootstrap.min.css';
 import 'static/bootstrap/js/bootstrap.min.js';
+//引入font-awesome
+import 'static/bootstrap/css/font-awesome.min.css';
 // 创建应用
 let vm = new Vue({
     el: '#app',

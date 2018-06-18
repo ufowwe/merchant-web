@@ -42,8 +42,8 @@ module.exports = {
         assetsPublicPath: '/',
         // 代理
         proxyTable: {
-            '/': {
-                target: '',
+            '/dchealth-platform': {
+                target: 'http://42.123.125.114:8080',
                 changeOrigin: true,
             }
         },
