@@ -30,7 +30,7 @@
   background: #2dc3e8;
 }
 .navbar .navbar-inner {
-  background: #006bb7;
+  background: #03b3b2;
 }
 .navbar .navbar-inner .navbar-container {
   padding-left: 10px;
@@ -722,10 +722,47 @@
         <div class="searchhelper">搜索</div>
       </div>
       <!-- /Page Sidebar Header -->
+      <Row>
+        <Col span="8">
+        <Menu :theme="theme2" v-for="(item,index) in list">
+          <Submenu name="1">
+            <template slot="title">
+              <Icon type="ios-paper"></Icon>
+              {{item.menuName}}
+            </template>
+            <MenuItem v-for="(liItem,idx) in item.children"@click="go(item)" name="1-1">{{liItem.menuName}}</MenuItem>
+
+          </Submenu>
+          <!--<Submenu name="2">
+            <template slot="title">
+              <Icon type="ios-people"></Icon>
+              用户管理
+            </template>
+            <MenuItem name="2-1">新增用户</MenuItem>
+            <MenuItem name="2-2">活跃用户</MenuItem>
+          </Submenu>
+          <Submenu name="3">
+            <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              统计分析
+            </template>
+            <MenuGroup title="使用">
+              <MenuItem name="3-1">新增和启动</MenuItem>
+              <MenuItem name="3-2">活跃分析</MenuItem>
+              <MenuItem name="3-3">时段分析</MenuItem>
+            </MenuGroup>
+            <MenuGroup title="留存">
+              <MenuItem name="3-4">用户留存</MenuItem>
+              <MenuItem name="3-5">流失用户</MenuItem>
+            </MenuGroup>
+          </Submenu>-->
+        </Menu>
+        </Col>
+      </Row>
       <!-- Sidebar Menu -->
       <ul class="nav sidebar-menu ng-scope" v-for="(item,index) in list">
         <!--客服管理-->
-        <li v-if="item.children && item.children.length>0"  @click="changeMenu(item)" :class="addClassopen(item)" >
+        <li v-if="item.children && item.children.length>0"  @click="changeMenu(item)" >
           <a href="#" class="menu-dropdown">
             <i class="menu-icon fa fa-credit-card"></i>
             <span class="menu-text"> {{item.menuName}} </span>
@@ -979,10 +1016,10 @@
         this.$router.push(item.path);
       },
       addClassopen(item){
-        if(item.menuShow){
-          return "open"
-        }else{
+        if(!item.menuShow){
           return ""
+        }else{
+          return "open"
         }
       },
       changeMenu(item){
