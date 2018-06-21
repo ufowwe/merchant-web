@@ -10,7 +10,7 @@ import store from '@/store/index.js';
 import { sync } from 'vuex-router-sync';
 // ajax请求
 import 'common/js/axios.js';
-// 引入jQuery，
+// 引入jQuery
 import 'static/jquery/jquery.min.js';
 // 初始化路由状态.
 sync(store, router);
