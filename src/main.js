@@ -12,7 +12,7 @@ import { sync } from 'vuex-router-sync';
 import 'common/js/axios.js';
 // 引入jQuery
 import 'static/jquery/jquery.min.js';
-// 初始化路由状态
+// 初始化路由状态.
 sync(store, router);
 Vue.config.productionTip = false;
 // iView 样式与主题.
