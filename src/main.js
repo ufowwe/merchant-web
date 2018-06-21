@@ -15,7 +15,7 @@ import 'static/jquery/jquery.min.js';
 // 初始化路由状态
 sync(store, router);
 Vue.config.productionTip = false;
-// iView 样式与主题
+// iView 样式与主题.
 import iView from 'iview';
 import 'common/less/iview-theme.less';
 //注册iView 组件
