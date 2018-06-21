@@ -20,7 +20,7 @@ import iView from 'iview';
 import 'common/less/iview-theme.less';
 //注册iView 组件
 Vue.use(iView);
-//引入bootstrap
+//引入bootstrap,
 import 'static/bootstrap/css/bootstrap.min.css';
 import 'static/bootstrap/js/bootstrap.min.js';
 //引入font-awesome
