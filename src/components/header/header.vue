@@ -6,6 +6,10 @@
     font-weight: 300 !important;
     font-family: 'Open Sans','Segoe UI';
   }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+    width: 200px;
+    min-height: 400px;
+  }
 .navbar {
   padding: 0;
   margin: 0;
@@ -449,7 +453,7 @@
         </div>
         <!-- /Navbar Barnd -->
         <!-- Sidebar Collapse -->
-        <div class="sidebar-collapse"><i class="collapse-icon fa fa-bars"></i></div>
+        <div class="sidebar-collapse" @click="handle()"><i class="collapse-icon fa fa-bars"></i></div>
         <!-- /Sidebar Collapse -->
         <!-- Account Area and Settings -->
         <div class="navbar-header pull-right">
@@ -722,7 +726,32 @@
         <div class="searchhelper">搜索</div>
       </div>
       <!-- /Page Sidebar Header -->
-      <Row>
+      <!--<el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
+        <el-radio-button :label="false">展开</el-radio-button>
+        <el-radio-button :label="true">收起</el-radio-button>
+      </el-radio-group>-->
+      <el-menu default-active="1" class="el-menu-vertical-demo">
+        <div v-for="(item, index) in menuList" :key="index">
+          <el-submenu index="1" v-if="item.children && item.children.length>0">
+            <template slot="title">
+              <i class="el-icon-location"></i>
+              <span>{{item.menuName}}</span>
+            </template>
+            <el-menu-item-group>
+              <template slot="title"></template>
+              <el-menu-item index="1-1">{{liItem.menuName}}</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-menu-item v-else>
+            <i class="el-icon-menu"></i>
+            <span slot="title">{{item.menuName}}</span>
+          </el-menu-item>
+        </div>
+
+      </el-menu>
+
+
+      <!--<Row>
         <Col span="8">
         <Menu :theme="theme2" v-for="(item,index) in list">
           <Submenu name="1">
@@ -733,7 +762,7 @@
             <MenuItem v-for="(liItem,idx) in item.children"@click="go(item)" name="1-1">{{liItem.menuName}}</MenuItem>
 
           </Submenu>
-          <!--<Submenu name="2">
+          &lt;!&ndash;<Submenu name="2">
             <template slot="title">
               <Icon type="ios-people"></Icon>
               用户管理
@@ -755,13 +784,13 @@
               <MenuItem name="3-4">用户留存</MenuItem>
               <MenuItem name="3-5">流失用户</MenuItem>
             </MenuGroup>
-          </Submenu>-->
+          </Submenu>&ndash;&gt;
         </Menu>
         </Col>
       </Row>
-      <!-- Sidebar Menu -->
+      &lt;!&ndash; Sidebar Menu &ndash;&gt;
       <ul class="nav sidebar-menu ng-scope" v-for="(item,index) in list">
-        <!--客服管理-->
+        &lt;!&ndash;客服管理&ndash;&gt;
         <li v-if="item.children && item.children.length>0"  @click="changeMenu(item)" >
           <a href="#" class="menu-dropdown">
             <i class="menu-icon fa fa-credit-card"></i>
@@ -777,14 +806,14 @@
             </li>
           </ul>
         </li>
-        <!--后台首页-->
+        &lt;!&ndash;后台首页&ndash;&gt;
         <li ui-sref-active="active" @click="go(item)" v-else :class="addClassopen(item)">
           <a>
             <i class="menu-icon glyphicon glyphicon-home"></i>
             <span class="menu-text"> {{item.menuName}} </span>
           </a>
         </li>
-      </ul>
+      </ul>-->
       <!--<ul class="nav sidebar-menu ng-scope">
         &lt;!&ndash;后台首页&ndash;&gt;
         <li ui-sref-active="active" class="active">
@@ -1001,8 +1030,14 @@
     name: "header",
     data() {
       list:""
+      return {
+        isCollapse: false
+      };
     },
     methods: {
+      handle(){
+        this.isCollapse=!this.isCollapse
+      },
       goMain(){
         this.$router.push("/admin");
       },
@@ -1069,3 +1104,20 @@
     ]}
   }
 </script>
+<!--<script>
+  export default {
+    data() {
+      return {
+        isCollapse: true
+      };
+    },
+    methods: {
+      handleOpen(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleClose(key, keyPath) {
+        console.log(key, keyPath);
+      }
+    }
+  }
+</script>-->
