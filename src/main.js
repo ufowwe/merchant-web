@@ -27,7 +27,6 @@ import 'static/bootstrap/js/bootstrap.min.js';
 import 'static/bootstrap/css/font-awesome.min.css';
 //引入element-ui
 import ElementUI from 'element-ui'
-// import 'element-ui/lib/theme-default/index.css'
 Vue.use(ElementUI)
 // 创建应用
 let vm = new Vue({
